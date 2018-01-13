@@ -1,7 +1,7 @@
 # JarFix
 
 Quick tool to "patch" a specific class in a jar file, replacing all occurrences of target string. NOTE: This tool is merely altering the class file directly in the jar, it is not decompiling / recompiling, and so can easily result in a broken jar if you are not careful what you are doing.
-The jar to change, class, source and target string are given in a properties file jarfix.properties:
+The jar to change, class, and string to search & replace are given in a properties file jarfix.properties:
 
 ~~~~
 jarfile=[path/to/the/jarfile.jar]
