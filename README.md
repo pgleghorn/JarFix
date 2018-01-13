@@ -19,3 +19,12 @@ replace=https\://secure.na2.echosign.com
 ~~~~
 
 Build and run with maven.
+
+Output looks like
+
+~~~~~
+class com/adobe/sign/utils/ApiClient.class found
+class is 21931 bytes
+replacing https://secure.na1.echosign.com with https://secure.na2.echosign.com
+changed: true
+~~~~~
