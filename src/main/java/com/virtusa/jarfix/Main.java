@@ -36,9 +36,9 @@ public class Main {
         m.modifyJar(props.getProperty("jarfile"));
     }
 
-    void modifyJar(String zipPath) throws IOException {
-        Path zipFilePath = Paths.get(zipPath);
-        try (FileSystem fs = FileSystems.newFileSystem(zipFilePath, null)) {
+    void modifyJar(String jarPath) throws IOException {
+        Path jarFilePath = Paths.get(jarPath);
+        try (FileSystem fs = FileSystems.newFileSystem(jarFilePath, null)) {
 
             String classname = (String) props.get("classname");
             String classnameTemp = classname + new Date().getTime();
@@ -64,11 +64,11 @@ public class Main {
             ByteArrayInputStream targetStream = new ByteArrayInputStream(data);
             ByteArrayOutputStream destStream = new ByteArrayOutputStream();
 
-            String source = ((String) props.get("source"));
-            String target = ((String) props.get("target"));
-            System.out.println("replacing " + source + " with " + target);
+            String search = ((String) props.get("search"));
+            String replace = ((String) props.get("replace"));
+            System.out.println("replacing " + search + " with " + replace);
 
-            ReplacingInputStream ris = new ReplacingInputStream(targetStream, source.getBytes("US-ASCII"), target.getBytes("US-ASCII"));
+            ReplacingInputStream ris = new ReplacingInputStream(targetStream, search.getBytes("US-ASCII"), replace.getBytes("US-ASCII"));
             int b;
             while ((b = ris.read()) > -1) {
                 destStream.write(b);
