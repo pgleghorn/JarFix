@@ -1,7 +1,10 @@
 # JarFix
 
 Quick tool to "patch" a specific class in a jar file, replacing all occurrences of target string. NOTE: This tool is merely altering the class file directly in the jar, it is not decompiling / recompiling, and so can easily result in a broken jar if you are not careful what you are doing.
-The jar to change, class, and string to search & replace are given in a properties file jarfix.properties:
+
+## Usage
+
+Edit jarfix.properties to specify the jar and class to change, and the search & replace strings:
 
 ~~~~
 jarfile=[path/to/the/jarfile.jar]
@@ -18,9 +21,15 @@ search=https\://secure.na1.echosign.com
 replace=https\://secure.na2.echosign.com
 ~~~~
 
-Build and run with maven.
+Then build with maven:
 
-Output looks like
+`mvn clean install`
+
+and run with
+
+`java -jar target/JarFix-1.0-SNAPSHOT-jar-with-dependencies.jar`
+
+The output looks like:
 
 ~~~~~
 class com/adobe/sign/utils/ApiClient.class found
